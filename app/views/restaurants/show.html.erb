@@ -1,0 +1,26 @@
+<div>
+  <h1><%= @restaurant.name %></h1>
+  <h3><%= @restaurant.category %></h3>
+  <p><%= @restaurant.address %></p>
+  <p><%= @restaurant.phone_number %></p>
+</div>
+
+<div>
+  <h3>Reviews</h3>
+  <% if @restaurant.reviews.any? %>
+    <% @restaurant.reviews.each do |review| %>
+      <div class="card mb-3">
+        <div class="card-body">
+            <h5> <%= review.content %></h5>
+            <small class="text-muted"> "Nota: " <%= "⭐" * review.rating %></small>
+        </div>
+      <% end %>
+    </div>
+  <% end%>
+
+  <%= link_to "Add a Review", new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
+</div>
+
+<div>
+  <%= link_to "Back Restaurants List", restaurants_path, class: "my-3 btn btn-success" %>
+</div>
